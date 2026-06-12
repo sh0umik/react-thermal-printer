@@ -1,0 +1,43 @@
+name: github-release
+on:
+  push:
+    tags:
+      - "v*"
+concurrency:
+  group: github-release
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm --filter @react-thermal-printer/image run build
+      - run: pnpm --filter @react-thermal-printer/printer run build
+      - run: pnpm --filter react-thermal-printer run build
+
+      - name: Pack tarballs
+        run: |
+          mkdir -p artifacts
+          cd packages/image && pnpm pack && mv *.tgz ../../artifacts/
+          cd ../printer && pnpm pack && mv *.tgz ../../artifacts/
+          cd ../react-thermal-printer && pnpm pack && mv *.tgz ../../artifacts/
+          ls -la ../../artifacts/
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
+          generate_release_notes: true

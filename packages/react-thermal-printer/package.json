@@ -1,7 +1,7 @@
 {
   "name": "react-thermal-printer",
   "type": "module",
-  "version": "0.22.0",
+  "version": "0.22.1",
   "description": "A React component to thermal printing",
   "license": "MIT",
   "main": "./src/index.ts",
@@ -42,15 +42,14 @@
   },
   "scripts": {
     "attw": "yarn pack && attw package.tgz",
-    "prepack": "yarn build",
+    "prepack": "pnpm run build",
     "build": "tsdown"
   },
   "peerDependencies": {
-    "react": "^18 || ^19",
-    "react-dom": "^18 || ^19"
+    "react": "^18 || ^19"
   },
   "dependencies": {
-    "@react-thermal-printer/image": "workspace:^",
+    "@react-thermal-printer/image": "workspace:^0.14.1",
     "@react-thermal-printer/printer": "workspace:^"
   },
   "devDependencies": {

@@ -1,5 +1,15 @@
 # Changelog
 
+## react-thermal-printer v0.22.1
+
+- fix: remove `react-dom/server` from browser bundle — `reactNodeToString` now walks React children directly (fixes Vite/Astro `AsyncLocalStorage` / `util.TextEncoder` crashes)
+- fix(@react-thermal-printer/image): bundle CJS-only `floyd-steinberg` for ESM consumers
+- chore: add pnpm workspace for fork development
+
+## @react-thermal-printer/image v0.14.1
+
+- fix: bundle `floyd-steinberg` in dist to avoid missing default export in browser ESM
+
 ## react-thermal-printer v0.22.0
 
 - feat(all): make package as "type: module", upgrade biome 2.2.2, typescript 5.9.2 (#112)

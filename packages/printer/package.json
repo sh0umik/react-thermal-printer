@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "attw": "yarn pack && attw package.tgz",
-    "prepack": "yarn build",
+    "prepack": "pnpm run build",
     "build": "tsdown"
   },
   "dependencies": {

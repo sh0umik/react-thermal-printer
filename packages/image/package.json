@@ -1,7 +1,7 @@
 {
   "name": "@react-thermal-printer/image",
   "type": "module",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "Image interface for printing",
   "sideEffects": false,
   "license": "MIT",
@@ -25,15 +25,11 @@
   ],
   "scripts": {
     "attw": "yarn pack && attw package.tgz",
-    "prepack": "yarn build",
+    "prepack": "pnpm run build",
     "build": "tsdown"
-  },
-  "dependencies": {
-    "floyd-steinberg": "^1.0.6"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
-    "@types/floyd-steinberg": "^1.0.0",
     "tsdown": "0.22.2"
   }
 }
